@@ -24,19 +24,19 @@
                                </div>
                            </li>
                             <li>
-                                <div  *ngFor="let item of columnValues(column)">
+                                <div class="items-check" *ngFor="let item of columnValues(column)">
 
                                     <div *ngIf="column.excludes.indexOf(item) === -1; else emptyCheckbox">
                                         <div (click)="include(column, item)">
                                             <i class="fal fa-check-square"></i>
-                                            {{ item }}
+                                            <span>{{ item }}</span>
                                         </div>
                                     </div>
 
                                     <ng-template  #emptyCheckbox>
                                         <div (click)="exclude(column, item)">
                                             <i  class="fal fa-square"></i>
-                                            {{ item }}
+                                            <span>{{ item }}</span>
                                         </div>
                                     </ng-template>
 
@@ -79,9 +79,10 @@
         </tr>
 
         <ng-container *ngFor="let row of filteredRows">
-            <tr *ngIf="!row['isDeleted']">
+            <tr>
                 <td class="text-center" *ngIf="checkbox">
-                    <input #check type="checkbox" (change)="selectedRow = (check.checked) ? row : null" [checked]="selectedRow == row">
+                     <i class="fal fa-check-square" (click)="selectedRow = null" *ngIf="selectedRow === row"></i>
+                     <i class="fal fa-square"  (click)="selectedRow = row" *ngIf="selectedRow !== row"></i>
                 </td>
                 <td
                     *ngFor="let column of columns"

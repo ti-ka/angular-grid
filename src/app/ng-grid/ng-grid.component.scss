@@ -1,16 +1,20 @@
 thead th {
   cursor: pointer;
   vertical-align: top;
+  background: #17aaba;
+  color: #f1f1f1;
 }
 
 .column-options-toggle {
-  color: #00000030;
+  // color: #00000030;
+  opacity: .3;
   position: relative;
   float: right;
 }
 
 th:hover .column-options-toggle {
-  color: #000000FF;
+  // color: #000000FF;
+  opacity: 1;
 }
 
 .filter-badge {
@@ -83,6 +87,20 @@ ul li div.filter {
   }
 
 
+}
+
+.items-check>div {
+  padding: .25em;
+  border-bottom: 1px solid #e5e5e5;
+
+  i {
+    margin-right: .5em;
+    font-size: 1.2em;
+  }
+}
+
+.items-check:last-child div {
+  border-bottom: none;
 }
 
 .m-r-20 {

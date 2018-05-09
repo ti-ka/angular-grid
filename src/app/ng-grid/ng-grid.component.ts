@@ -58,7 +58,7 @@ export class NgGridComponent implements OnInit {
             return [];
         }
 
-        let rows: any[] = this.rows.concat();
+        let rows: any[] = this.rows.concat().filter(row => !row.isDeleted);
 
         const filterColumns = this.columns.filter(c => c.excludes.length > 0 || (c.filter && c.filterBy));
         const sortColumn = this.columns.find(c => c && c.sort === 'asc' || c.sort === 'desc' );
