@@ -30,10 +30,14 @@ export class NgGridComponent implements OnInit {
             c.filter = c.filter || '';
             c.excludes = c.excludes || [];
         });
-        this.http.get<any[]>(this.url).subscribe(data => {
-            this.rows = data;
-            this.totalCount = this.rows.length;
-        });
+        if (this.url) {
+            this.http.get<any[]>(this.url).subscribe(data => {
+                this.rows = data;
+                this.totalCount = this.rows.length;
+            });
+        } else {
+            this.totalCount = this.rows ? this.rows.length : 0;
+        }
     }
 
     get pages(): number[] {
@@ -213,6 +217,7 @@ export interface IColumn {
     filter?: string;
     excludes?: string[];
     onClick?: (value, row, IColumn) => void;
+    align?: 'left' | 'right' | 'center' | 'justify'
 }
 
 export interface IAction {

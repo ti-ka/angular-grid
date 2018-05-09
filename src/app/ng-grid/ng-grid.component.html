@@ -87,7 +87,7 @@
                 <td
                     *ngFor="let column of columns"
                     (click)="onCellClicked(row, column)"
-                    [ngClass]="column.classes">
+                    class="{{ column.classes }} text-{{column.align}}">
                     {{ row[column.field] }}
                 </td>
             </tr>
